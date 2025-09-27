@@ -1,0 +1,57 @@
+{
+  "name": "averon-catalog-webapp",
+  "version": "1.0.0",
+  "description": "Averon Product Catalog Web Application",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "axios": "^1.6.0",
+    "framer-motion": "^10.16.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-image-gallery": "^1.3.0",
+    "react-router-dom": "^6.20.0",
+    "react-scripts": "5.0.1",
+    "styled-components": "^6.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "preview": "npm run build && npx serve -s build",
+    "check-env": "node check-env.js",
+    "check-assets": "node check-assets.js",
+    "vercel-check": "npm run check-env && npm run check-assets && npm run build",
+    "test:playwright": "npx playwright test",
+    "test:playwright:headed": "npx playwright test --headed",
+    "test:accessibility": "npx playwright test tests/accessibility.spec.ts",
+    "test:responsive": "npx playwright test tests/responsive.spec.ts"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.1"
+  }
+}

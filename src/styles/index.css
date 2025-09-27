@@ -1,0 +1,101 @@
+/* Основные стили для Mini App */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--surface-muted, #f4f7fb);
+  color: var(--text-primary, #0a1a33);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+/* Telegram Web App переменные */
+:root {
+  --tg-color-scheme: light;
+  --tg-theme-bg-color: #ffffff;
+  --tg-theme-text-color: #0a1a33;
+  --tg-theme-hint-color: #6b7b94;
+  --tg-theme-link-color: #1f6feb;
+  --tg-theme-button-color: #1f6feb;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: #f1f4f9;
+
+  --primary-color: #1f6feb;
+  --surface-muted: #f4f7fb;
+  --surface-card: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.86);
+  --border-subtle: rgba(16, 36, 68, 0.12);
+  --shadow-soft: 0 18px 36px rgba(10, 26, 51, 0.14);
+  --shadow-strong: 0 32px 64px rgba(10, 26, 51, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Прелоадер */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner {
+  border: 3px solid var(--tg-theme-secondary-bg-color);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Кастомные скроллбары для всего сайта */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(226, 232, 240, 0.6);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #cbd5f5 0%, #94a3b8 100%);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #64748b 0%, #475569 100%);
+  background-clip: content-box;
+}
+
+/* Для Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 rgba(226, 232, 240, 0.6);
+}

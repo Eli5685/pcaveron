@@ -1,0 +1,45 @@
+/* Стили для иконки рубля */
+.ruble-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.ruble-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Адаптивность для различных размеров */
+.ruble-icon.small {
+  width: 12px;
+  height: 12px;
+}
+
+.ruble-icon.medium {
+  width: 16px;
+  height: 16px;
+}
+
+.ruble-icon.large {
+  width: 20px;
+  height: 20px;
+}
+
+/* Совместимость с различными браузерами */
+@supports (-webkit-touch-callout: none) {
+  .ruble-icon svg text {
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Тема для Telegram */
+@media (prefers-color-scheme: dark) {
+  .ruble-icon {
+    color: var(--tg-theme-text-color, currentColor);
+  }
+}

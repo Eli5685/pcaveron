@@ -1,0 +1,262 @@
+/* Простые стили для строки поиска */
+.search-bar-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar-mobile {
+  margin-bottom: 16px;
+}
+
+.search-bar-desktop {
+  margin: 0;
+}
+
+.search-form {
+  width: 100%;
+}
+
+
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #d9e3f5;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  height: 52px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+}
+
+.search-bar-desktop .search-input-wrapper {
+  height: 50px;
+  border-radius: 999px;
+  border-width: 1.5px;
+  box-shadow: 0 12px 26px rgba(31, 41, 55, 0.18);
+}
+
+.search-input-wrapper:focus-within {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+.search-bar-desktop .search-input-wrapper:focus-within {
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.25);
+}
+
+.search-icon {
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar-desktop .search-icon {
+  padding-left: 18px;
+  padding-right: 14px;
+}
+
+.search-icon-img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+  filter: brightness(1.2);
+}
+
+.search-bar-desktop .search-icon-img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 14px 12px;
+  font-size: 16px;
+  color: #1f2937;
+  outline: none;
+}
+
+.search-bar-desktop .search-input {
+  padding: 14px 16px 14px 10px;
+  font-size: 16px;
+}
+
+.search-input::placeholder {
+  color: rgba(100, 116, 139, 0.65);
+  font-size: 14px;
+}
+
+.search-bar-desktop .search-input::placeholder {
+  color: rgba(71, 85, 105, 0.6);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.clear-button {
+  background: rgba(226, 232, 240, 0.8);
+  border: none;
+  padding: 0;
+  margin: 4px 8px 4px 0;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+.search-bar-desktop .clear-button {
+  background: rgba(226, 232, 240, 0.9);
+  margin-right: 16px;
+  width: 32px;
+  height: 32px;
+  color: #1f2937;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+.clear-button:hover {
+  background: rgba(191, 219, 254, 0.45);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.search-bar-desktop .clear-button:hover {
+  background: rgba(191, 219, 254, 0.5);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.clear-button:active {
+  transform: scale(0.94);
+}
+
+/* Поисковые предложения */
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  margin-top: 8px;
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestions-title {
+  padding: 12px 16px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #f8f9fa;
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: #f0f0f0;
+  margin: 0;
+}
+
+.suggestion-btn {
+  background: #ffffff;
+  border: none;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.suggestion-btn:hover {
+  background: #f8f9fa;
+  color: #2481cc;
+}
+
+.suggestion-btn:active {
+  transform: scale(0.98);
+  background: #e3f2fd;
+}
+
+/* Адаптивность */
+@media (max-width: 1023px) {
+  .search-bar-desktop {
+    display: none;
+  }
+
+  .search-bar-container {
+    background: transparent;
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-bar-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input-wrapper {
+    border-radius: 10px;
+    height: 48px;
+  }
+  
+  .search-input {
+    font-size: 16px; /* Предотвращает зум на iOS */
+    padding: 12px;
+  }
+  
+  .search-icon {
+    padding: 0 10px;
+    font-size: 14px;
+  }
+  
+  .clear-button {
+    width: 26px;
+    height: 26px;
+    margin: 4px 6px 4px 0;
+  }
+  
+  .suggestions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .suggestion-btn {
+    padding: 16px;
+    font-size: 15px;
+  }
+}
+

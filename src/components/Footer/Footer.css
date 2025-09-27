@@ -1,0 +1,38 @@
+.app-footer {
+  position: static;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(248, 250, 255, 0.92);
+  color: rgba(12, 32, 54, 0.6);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(12, 32, 54, 0.08);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-link {
+  color: #1f6feb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-sep {
+  color: rgba(12, 32, 54, 0.3);
+}
+
+.footer-text {
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+

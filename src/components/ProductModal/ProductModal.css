@@ -1,0 +1,631 @@
+/* Стили для модального окна товара */
+.product-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.product-modal {
+  background: var(--tg-theme-bg-color, #ffffff);
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 24px 56px rgba(15, 23, 42, 0.32);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Кнопка закрытия */
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+/* Галерея фотографий */
+.photo-gallery {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(180deg, #fafafa 0%, #f7f9fb 100%);
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.photo-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.product-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 0.3s ease;
+  background: #fafafa;
+}
+
+.product-photo.loading {
+  opacity: 0;
+}
+
+.image-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+/* Навигация по фото */
+.photo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.photo-nav:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.photo-nav:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.photo-nav.prev {
+  left: 16px;
+}
+
+.photo-nav.next {
+  right: 16px;
+}
+
+/* Индикаторы фото */
+.photo-indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.indicator.active {
+  background: white;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Информация о товаре */
+.product-info-modal {
+  padding: 20px;
+}
+
+.product-header {
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap; /* чтобы элементы переносились на новую строку */
+  align-items: flex-start;
+  gap: 8px 12px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--tg-theme-text-color, #0f172a);
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip; /* убираем троеточие */
+  word-break: break-word;
+  flex: 1 1 100%; /* заголовок занимает всю строку */
+}
+
+.product-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start; /* цена под названием слева */
+  min-width: 0;
+  flex: 1 1 100%; /* на отдельной строке */
+  margin-top: 6px; /* дальше от названия */
+  margin-bottom: 0; /* не увеличиваем зазор со складом */
+}
+
+.price-original-modal {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-current-modal {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1f6feb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-ruble-icon {
+  color: inherit;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* Минималистичное отображение наличия */
+.stock-info-modal { margin: 4px 0 12px 0; }
+.stock-chips { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.chip {
+  background: #eef2f6;
+  color: #0f172a;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.chip.ok { background: #e8f7ee; color: #114b25; }
+.chip.zero { background: #f3f4f6; color: #6b7280; }
+.chip.none { background: #fef2f2; color: #b91c1c; padding: 5px 12px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.dot.rf { background: #16a34a; }
+.dot.cn { background: #0891b2; }
+
+.stock-info-modal.unavailable {
+  color: #999;
+  background: #f0f0f0;
+}
+
+/* Описание и характеристики */
+.product-description,
+.product-specs {
+  margin-bottom: 20px;
+}
+
+.product-description h3,
+.product-specs h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tg-theme-text-color, #000);
+  margin: 0 0 8px 0;
+}
+
+.description-container {
+  position: relative;
+}
+
+.description-text {
+  transition: max-height 0.15s ease;
+  overflow: hidden;
+}
+
+.description-text.collapsed {
+  max-height: 60px;
+  position: relative;
+}
+
+.description-text.collapsed::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, var(--tg-theme-bg-color, #ffffff));
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.description-text.expanded {
+  max-height: 500px;
+  transition: max-height 0.15s ease;
+}
+
+.description-text.expanded::after {
+  opacity: 0;
+}
+
+.description-text p {
+  font-size: 14px;
+  color: var(--tg-theme-text-color, #000);
+  line-height: 1.5;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+/* Кнопка разворота текста - минималистичная с Safari совместимостью */
+.expand-text-btn {
+  display: inline;
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 8px 4px; /* Увеличенная область клика для Safari */
+  margin-left: 4px;
+  text-decoration: underline;
+  /* Safari совместимость */
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Минимальный размер для touch */
+  min-width: 44px;
+  min-height: 24px;
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+.expand-text-btn:hover {
+  color: #666;
+}
+
+.expand-text-btn:active {
+  color: #333;
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+/* Дополнительные стили для iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .expand-text-btn {
+    /* Скрытая область клика для лучшего UX */
+    position: relative;
+  }
+  
+  .expand-text-btn::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    /* Прозрачная область для клика */
+  }
+}
+
+/* Характеристики */
+.product-specs {
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+}
+
+.spec-item {
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.spec-label {
+  font-weight: 500;
+  color: #666;
+  min-width: 100px;
+  margin-right: 8px;
+}
+
+.spec-value {
+  color: var(--tg-theme-text-color, #000);
+  flex: 1;
+}
+
+.spec-colors,
+.spec-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.color-tag,
+.size-tag {
+  background: #f0f0f0;
+  color: #333;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+/* Секция заказа */
+.order-section {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr; /* по умолчанию одна колонка — кнопка во всю ширину */
+  gap: 10px;
+}
+
+.direct-purchase-note {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #e6ebf0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.order-button-avito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff; /* белый фон */
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 44px;
+}
+.order-button-ozon,
+.order-button-wb,
+.order-button-manager {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff; /* белый фон */
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 44px;
+  margin-left: 0;
+}
+
+.order-button-manager.tg {
+  background: #229ED9;
+  color: #ffffff;
+  border-color: #229ED9;
+}
+.order-button-manager.tg:hover {
+  box-shadow: 0 8px 20px rgba(34,158,217,0.25);
+}
+.order-button-manager.tg:active {
+  box-shadow: 0 4px 12px rgba(34,158,217,0.2);
+}
+.order-button-manager .tg-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.order-button-ozon:hover,
+.order-button-wb:hover,
+.order-button-manager:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.order-button-ozon:active,
+.order-button-wb:active,
+.order-button-manager:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.ozon-logo {
+  height: 18px;
+}
+
+.wb-logo {
+  height: 18px;
+  color: #7C3AED; /* фиолетовый */
+}
+
+.order-button-avito:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Полноэкранный просмотр фото */
+.fullscreen-photo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease;
+}
+
+.fullscreen-photo {
+  max-width: 96vw;
+  max-height: 96vh;
+  object-fit: contain;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.fullscreen-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.fullscreen-close:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.order-button-avito:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.avito-logo {
+  height: 18px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .product-modal-overlay {
+    padding: 8px;
+  }
+  
+  .product-modal {
+    border-radius: 8px;
+  }
+  
+  .photo-gallery {
+    height: 320px;
+  }
+  
+  .product-info-modal {
+    padding: 16px;
+  }
+  
+  .product-name {
+    font-size: 18px;
+  }
+  
+  .price-current-modal {
+    font-size: 20px;
+  }
+
+  /* Кнопки маркетплейсов: 2 в ряд (Avito/Ozon), WB на всю ширину ниже */
+  .order-section {
+    display: grid;
+    grid-template-columns: 1fr; /* одна колонка на мобилке по умолчанию */
+    gap: 10px;
+    justify-content: stretch;
+  }
+  .order-section.two-cols {
+    grid-template-columns: 1fr 1fr; /* когда есть Avito+Ozon */
+  }
+  .order-button-avito,
+  .order-button-ozon,
+  .order-button-manager,
+  .order-button-wb {
+    width: 100%;
+    justify-content: center;
+  }
+  .order-button-wb {
+    grid-column: 1 / -1; /* на всю ширину */
+    padding-top: 12px;
+    padding-bottom: 12px; /* немного выше — длинная надпись */
+  }
+}

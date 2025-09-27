@@ -1,0 +1,13 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#f0f0f0"/>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="16" fill="#999" text-anchor="middle">
+    AVERON SHOP
+  </text>
+  <text x="200" y="220" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle">
+    Фото товара
+  </text>
+  <circle cx="200" cy="260" r="30" fill="#ddd"/>
+  <text x="200" y="270" font-family="Arial, sans-serif" font-size="20" fill="#999" text-anchor="middle">
+    📷
+  </text>
+</svg>
